@@ -1,10 +1,78 @@
+import java.util.*;
 
 public class BinarySearchTree<E> {
     TreeNode<E> root; // Represents the whole tree
 	protected int size = 0; // Size of the tree
+	protected String inorderString = "";
+	protected String preorderString = "";
+	protected String postorderString = "";
 	
 	BinarySearchTree(){ // Constructor
 		
+	}
+	
+	public void inorder(TreeNode<E> node){ // Traverses tree with the inorder method.
+		if (node == null){ // Checks to see if the node is null so it can return.
+			return;
+		}
+		inorder(node.leftBranch); // Calls  left branch of node recursively.
+		inorderString += (node.element + " "); // Prints the element of the current node.
+		inorder(node.rightBranch); // Calls right branch of node recursively.
+	}
+	
+	public void postorder(TreeNode<E> node){ // Traverses tree with the postorder method.
+		if (node == null){ // Checks to see if the node is null so it can return.
+			return;
+		} 
+		postorder(node.leftBranch); // Calls  left branch of node recursively.
+		postorder(node.rightBranch); // Calls right branch of node recursively.
+		postorderString += (node.element + " "); // Prints the element of the current node.
+	}
+	
+	public void preorder(TreeNode<E> node){ // Traverses tree with the preorder method.
+		if (node == null){ // Checks to see if the node is null so it can return.
+			return;
+		}
+		preorderString += (node.element + " "); // Prints the element of the current node.
+		preorder(node.leftBranch); // Calls  left branch of node recursively.
+		preorder(node.rightBranch); // Calls right branch of node recursively.
+	}
+	
+	public void traversalOrderFiles(){ // Prints our files to represent all of the traversal methods of the search tree
+		Formatter inorderFile = null;
+		Formatter preorderFile = null;
+		Formatter postorderFile = null;
+		
+		try{ // open inorder file
+			inorderFile = new Formatter("inorder.out");
+		}
+		catch(Exception e){
+			
+		}
+		
+		inorderFile.format("%s", inorderString); // input the inorder in the inorder file
+		
+		try{ // open preorder file
+			preorderFile = new Formatter("preorder.out");
+		}
+		catch(Exception e){
+			
+		}
+		
+		preorderFile.format("%s", preorderString); // Input the preorder in the inorder file
+		
+		try{ // open postorder file
+			postorderFile = new Formatter("postorder.out");
+		}
+		catch(Exception e){
+			
+		}
+		
+		postorderFile.format("%s", postorderString); // Input the postorderi in the postorder file
+		
+		inorderFile.close(); // Close all formatters
+		preorderFile.close();
+		postorderFile.close();
 	}
 	
 	public void add(E e){ // adds new node to tree
