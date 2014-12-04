@@ -1,5 +1,4 @@
 import java.util.*;
-import java.math.*;
 
 public class BinarySearchTree<E> 
 {
@@ -10,7 +9,7 @@ public class BinarySearchTree<E>
 	protected String inorderString = "";
 	protected String preorderString = "";
 	protected String postorderString = "";
-	protected int parentNumber = 1;
+	protected int parentNumber = 2;
 	
 	//Default Constructor
 	BinarySearchTree()
@@ -18,11 +17,7 @@ public class BinarySearchTree<E>
 		
 	}
 	
-	
-	
-	
-	
-	
+
 	/*
 	 * 	Traverses tree with the "inorder" method.
 	 */
@@ -38,7 +33,7 @@ public class BinarySearchTree<E>
 		inorder(node.leftBranch); 
 		
 		// Prints the element of the current node.
-		inorderString += (node.element + "("+node.depth+") "); 
+		inorderString += (node.element + " "); 
 		
 		// Calls right branch of node recursively.
 		inorder(node.rightBranch); 
@@ -67,7 +62,7 @@ public class BinarySearchTree<E>
 		postorder(node.rightBranch);
 		
 		// Prints the element of the current node.
-		postorderString += (node.element + "("+node.depth+") "); 
+		postorderString += (node.element + " "); 
 	}
 	
 	
@@ -83,7 +78,7 @@ public class BinarySearchTree<E>
 		}
 		
 		// Prints the element of the current node.
-		preorderString += (node.element + "("+node.depth+") "); 
+		preorderString += (node.element + " "); 
 		
 		// Calls  left branch of node recursively.
 		preorder(node.leftBranch); 
@@ -91,15 +86,6 @@ public class BinarySearchTree<E>
 		// Calls right branch of node recursively.
 		preorder(node.rightBranch); 
 	}
-	
-	public void breadthOrder(TreeNode<E> node)
-	{
-		
-	}
-	
-	
-	
-	
 	
 	// Prints our files to represent all of the traversal methods of the search tree
 	public void traversalOrderFiles()
@@ -249,23 +235,7 @@ public class BinarySearchTree<E>
 	
 	public void displayTree(TreeNode<E> node)
 	{
-		/*
-		int wordLength;
-		int height = (int) (2*maxDepth);
-		int length = (int) Math.pow(2.0,maxDepth);
 		
-		Point[][] grid = consoleGUI.createGrid(height, length);
-		
-		System.out.println();
-		System.out.println("Printing tree...");
-		consoleGUI.displayGrid(grid, height, length);
-		*/
-		
-		//consoleGUI.addWord(grid, ((length/2) - ), (), root.element);
-		
-		// Checks to see if the node is null so it can return.
-		
-
 			if (node == null)
 			{ 
 				return;
@@ -274,7 +244,12 @@ public class BinarySearchTree<E>
 			// Prints the element of the current node.
 			if (searchDepth == node.depth)
 			{
-				System.out.print(node.element +"(" + node.status +"p" + node.cn +","+node.pn +") ");
+				if (searchDepth == 0){
+					System.out.print(node.element +"(" + node.pn +") ");
+				}
+				else{
+					System.out.print(node.element +"(" + node.status +"p" + node.cn +","+node.pn +") ");
+				}
 			}
 			
 			
@@ -294,7 +269,7 @@ public class BinarySearchTree<E>
 		{
 			//Running display method by giving it the root node
 			displayTree(root);
-			
+			System.out.println();
 			//adding one to searchDepth
 			searchDepth ++;
 			
@@ -304,22 +279,7 @@ public class BinarySearchTree<E>
 		}
 		
 	}
-	
-	
-	
-	public void GUItree()
-	{
-		int wordLength;
-		int height = (int) (2*maxDepth);
-		int length = (int) Math.pow(2.0,maxDepth);
-	}
-	
-	
-	
-	
-	
-	
-	//String[][] contents= new String[(int) (2*maxDepth)][(int) Math.pow(2.0,maxDepth)];
+
 	
 	
 	/*
@@ -338,8 +298,9 @@ public class BinarySearchTree<E>
 		//current depth of node
 		int depth = 0;
 		
+		// Helps in identifying relations of nodes.
 		String status = null;
-		int pn = 0;
+		int pn = 1;
 		int cn = 1;
 		
 		// Constructor for node.
@@ -350,3 +311,4 @@ public class BinarySearchTree<E>
 	}
 
 }
+

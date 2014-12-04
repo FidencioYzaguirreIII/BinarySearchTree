@@ -47,7 +47,7 @@ public class finalProjectMain {
 						fileInput();
 						break;
 						
-					case "2": // need to pay attention and figure out how to end the program without breaking everything
+					case "2": 
 						System.out.println("Goodbye!");
 						System.exit(0);
 					default: 
@@ -149,8 +149,23 @@ public class finalProjectMain {
 	        //throws exception whenever a duplicate is found, starts the input loop all over again
 	        catch(InputMismatchException x)
 	        {   
-	           System.out.println("Duplicate word detected: \""+duplicate+"\" - Please enter another file.");
-	           continue loop;
+	            System.out.println("Duplicate word detected: \""+duplicate+"\" - Would you like to still load a file?");
+	       		System.out.println("---Choose an Option---");
+				System.out.println("1) Load a file");
+				System.out.println("2) Exit the program");
+				String errorInput = systemInInput.nextLine();
+				
+				//Using a switch for parsing user input
+				switch(errorInput)
+				{
+					case "1":
+						continue loop;
+					case "2":
+						System.out.println("Goodbye!");
+						System.exit(0);
+					default: 
+						throw new InputMismatchException();
+				}
 	        }
 			
 	        catch(NoSuchElementException x)
@@ -159,8 +174,23 @@ public class finalProjectMain {
 	        }
 			catch(IOException x)
 			{
-				System.out.println("Error: Could not find file location. Please try again!");
-				continue loop;
+				System.out.println("Error: Could not find file location. Would you like to try again?");
+				System.out.println("---Choose an Option---");
+				System.out.println("1) Load a file");
+				System.out.println("2) Exit the program");
+				String errorInput = systemInInput.nextLine();
+				
+				//Using a switch for parsing user input
+				switch(errorInput)
+				{
+					case "1":
+						continue loop;
+					case "2":
+						System.out.println("Goodbye!");
+						System.exit(0);
+					default: 
+						throw new InputMismatchException();
+				}
 			}	
 			
 			fileContinue = false;
@@ -176,6 +206,13 @@ public class finalProjectMain {
 		}
 		
 		
+		// Print out tree
+		System.out.println("\n\nEach element is displayed with a code to designate whether the left or right child for a parent node.");
+		System.out.println("For example the code for the left child of the root would be lcp1,2 because it is the left child of the");
+		System.out.println("root which is the first parent. The 2 would represent that the node is the second node created.");
+		System.out.println("\nDisplaying tree now.... \n");
+		tree.runDisplayTree();
+		
 		tree.preorder(tree.root);			//Creating the preorder string
 		tree.inorder(tree.root);			//Creating the inorder string
 		tree.postorder(tree.root);			//Creating the postorder string
@@ -183,15 +220,9 @@ public class finalProjectMain {
 		//Calling the method to write results to .out files
 		tree.traversalOrderFiles();
 		
-		
+		// Print out traversal methods
 		System.out.println("Pre Order: "	+tree.preorderString);
 		System.out.println("In Order: "		+tree.inorderString);
 		System.out.println("Post Order: "	+tree.postorderString);
-		
-		System.out.println("\n\nEach element is displayed with a code to designate whether the left or right child for a parent node.");
-		System.out.println("For example the code for the left child of the root would be lcp1 because it is the left child of the");
-		System.out.println("root which is the first parent.");
-		System.out.println("\nDisplaying tree now.... \n");
-		tree.runDisplayTree();
 	}
 }
