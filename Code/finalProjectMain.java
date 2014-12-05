@@ -1,3 +1,7 @@
+// Fidencio Yzaguirre III Adam Carr Austin Briggs
+//Section 001
+//Program runs by running finalProjectMain.java as a java application.
+
 import java.io.*;
 import java.util.*;
 
@@ -218,7 +222,7 @@ public class finalProjectMain {
 		tree.postorder(tree.root);			//Creating the postorder string
 		
 		//Calling the method to write results to .out files
-		tree.traversalOrderFiles();
+		tree.traversalOrderFiles(fileName);
 		
 		// Print out traversal methods
 		System.out.println("Pre Order: "	+tree.preorderString);

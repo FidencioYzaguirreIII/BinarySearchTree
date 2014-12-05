@@ -1,4 +1,12 @@
-import java.util.*;
+// Fidencio Yzaguirre III Adam Carr Austin Briggs
+//Section 001
+//Program runs by running finalProjectMain.java as a java application.
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class BinarySearchTree<E> 
 {
@@ -88,63 +96,49 @@ public class BinarySearchTree<E>
 	}
 	
 	// Prints our files to represent all of the traversal methods of the search tree
-	public void traversalOrderFiles()
+	public void traversalOrderFiles(String name) throws IOException
 	{ 
-		Formatter inorderFile = null;
-		Formatter preorderFile = null;
-		Formatter postorderFile = null;
+	    // Create components to write to for inorder.out file
+		File inorderFile = new File("inorder.out");
+		FileWriter fileWriter = new FileWriter(inorderFile, true);
+		BufferedWriter buffer = new BufferedWriter(fileWriter);
+		PrintWriter printWriter = new PrintWriter(buffer);
 		
+		//Write to and close inorder.out
+		printWriter.println(name);
+		printWriter.println();
+		printWriter.println(inorderString);
+		printWriter.println();
+		printWriter.println();
+		printWriter.close();
 		
-		// open inorder file
-		try
-		{ 
-			inorderFile = new Formatter("inorder.out");
-		}
-		catch(Exception e)
-		{
-			
-		}
-		// input the inorder in the inorder file
-		inorderFile.format("%s", inorderString); 
+		// Create components to write to for preorder.out file
+		File preorderFile = new File("preorder.out");
+		fileWriter = new FileWriter(preorderFile, true);
+		buffer = new BufferedWriter(fileWriter);
+		printWriter = new PrintWriter(buffer);
 		
+		//Write to and close preorder.out
+		printWriter.println(name);
+		printWriter.println();
+		printWriter.println(preorderString);
+		printWriter.println();
+		printWriter.println();
+		printWriter.close();
 		
+		// Create components to write to for postorder.out file
+		File postorderFile = new File("postorder.out");
+		fileWriter = new FileWriter(postorderFile, true);
+		buffer = new BufferedWriter(fileWriter);
+		printWriter = new PrintWriter(buffer);
 		
-		
-		// open preorder file
-		try
-		{ 
-			preorderFile = new Formatter("preorder.out");
-		}
-		catch(Exception e)
-		{
-			
-		}
-		// Input the preorder in the inorder file
-		preorderFile.format("%s", preorderString); 
-		
-		
-		
-		
-		// open postorder file
-		try
-		{ 
-			postorderFile = new Formatter("postorder.out");
-		}
-		catch(Exception e)
-		{
-			
-		}
-		// Input the postorder in the postorder file
-		postorderFile.format("%s", postorderString); 
-		
-		
-		
-		
-		
-		// Close all formatters
-		inorderFile.close();
-		preorderFile.close();
-		postorderFile.close();
+		//Write to and close postorder.out
+		printWriter.println(name);
+		printWriter.println();
+		printWriter.println(postorderString);
+		printWriter.println();
+		printWriter.println();
+		printWriter.close();
 	}
 	
 	
